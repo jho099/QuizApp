@@ -4,5 +4,6 @@
     <string name="click_button">Submit</string>
     <string name="name_hint">What is your name?</string>
     <string name="git_hint">What is your GitHub user?</string>
+    <string name="change_button">Change</string>
 
 </resources>

@@ -30,28 +30,20 @@ public class MainActivity extends AppCompatActivity {
         changeButton = findViewById(R.id.changeButton);
         submitButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                Log.i("userInfo", "" + responseText1.getText().toString() + ", https://github.com/" + responseText2.getText().toString());
-                displayView.setText("https://github.com/" + responseText2.getText().toString());
-                String gitLink = "https://github.com/" + responseText2.getText().toString();
-                String clickLink = " <a href=" + gitLink + ">Your GitHub link!</a>";
-                displayView.setMovementMethod(LinkMovementMethod.getInstance());
-                displayView.setText(Html.fromHtml(clickLink));
+            public void onClick(View v) {
+                if (submitButton.getText().toString().equals("CLEAR")) {
+                    responseText1.setText("");
+                    responseText2.setText("");
+                    submitButton.setText("SUBMIT");
 
-            }
-        });
-        changeButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-
-                int color = ((ColorDrawable)changeButton.getBackground()).getColor();
-                Log.i("startColor", ""+color);
-                Log.i("origColor", ""+R.color.changeColorButton);
-                if(color == getResources().getColor(R.color.changeColorButton)){ //if orig, change to new
-                    changeButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                }
-                else{ //if new, change to orig
-                    changeButton.setBackgroundColor(getResources().getColor(R.color.changeColorButton));
+                } else { //says SUBMIT
+                    Log.i("userInfo", "" + responseText1.getText().toString() + ", https://github.com/" + responseText2.getText().toString());
+                    displayView.setText("https://github.com/" + responseText2.getText().toString());
+                    String gitLink = "https://github.com/" + responseText2.getText().toString();
+                    String clickLink = " <a href=" + gitLink + ">Your GitHub link!</a>";
+                    displayView.setMovementMethod(LinkMovementMethod.getInstance());
+                    displayView.setText(Html.fromHtml(clickLink));
+                    submitButton.setText("CLEAR");
                 }
             }
         });
@@ -67,5 +59,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });*/
+    }
+
+    public void changeColor(View view) {
+        int color = ((ColorDrawable)changeButton.getBackground()).getColor();
+        Log.i("startColor", ""+color);
+        Log.i("origColor", ""+R.color.changeColorButton);
+        if(color == getResources().getColor(R.color.changeColorButton)){ //if orig, change to new
+            changeButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        }
+        else{ //if new, change to orig
+            changeButton.setBackgroundColor(getResources().getColor(R.color.changeColorButton));
+        }
     }
 }
